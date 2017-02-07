@@ -25,15 +25,16 @@ sys_init = {
                 data: toSend,
                 contentType: 'application/json',
                 dataType: 'json',
-                success: /*hide this div and show the log in div*/
+                success: sys_init.moveToHome,
             });
         }
     },
-    moveToHome: function () {
-        if (Id != 0) {
+    moveToHome: function (data) {
+        if (data.iduser != 0) {
             // Storing the id number of the user
-            sessionStorage.setItem('id', Id);
+            sessionStorage.setItem('id', data.iduser);
             //Take them to home page
+            window.location.href = 'home/index.html#' + data.iduser;
         } else {
             $('#regPassWarning').show();
         }
