@@ -23,16 +23,17 @@ Event = {
     coreUrl: "http://" + window.location.host + "/GoHost/api/",
     createFromDB: function (idevent) {
         //fill all the relevant fields from SQL, get accessor from session, create objects
+        //for category, user, host, location, visibility, accessibility
         var url = Event.coreUrl + "event?idevent="+$(idevent).val();
         $.getJSON(url).done(sys_init.createFollowUp);
     },
     createFollowUp: function(data){
-        
+        Event.accessor = parseInt(sessionStorage.getItem('id');
     },
     
     create: function (idhost, idcategory, eventStart, eventEnd, eventMax, description, title, idvisibility, idaccessibility, idlocation) {
         //creates a user from the idhost, category from idcategory, visibility from idvisibility/idaccessibility, location from idlocation, all other fields are filled from parameters
-        //if accessibility is 1, add all friends to invited list
+        //if accessibility is 1, add all friends to invited list. Add the created object to the database.
     },
     isAccessorHost: function () {
         if (this.accessor.getID() == this.host.getID()) {
