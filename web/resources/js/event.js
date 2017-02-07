@@ -20,9 +20,16 @@ Event = {
     idevent: 0,
     location: null,
     users: null,
+    coreUrl: "http://" + window.location.host + "/GoHost/api/",
     createFromDB: function (idevent) {
         //fill all the relevant fields from SQL, get accessor from session, create objects
+        var url = Event.coreUrl + "event?idevent="+$(idevent).val();
+        $.getJSON(url).done(sys_init.createFollowUp);
     },
+    createFollowUp: function(data){
+        
+    },
+    
     create: function (idhost, idcategory, eventStart, eventEnd, eventMax, description, title, idvisibility, idaccessibility, idlocation) {
         //creates a user from the idhost, category from idcategory, visibility from idvisibility/idaccessibility, location from idlocation, all other fields are filled from parameters
         //if accessibility is 1, add all friends to invited list
@@ -85,9 +92,43 @@ Event = {
     },
     editEndTime: function(endTime){
         this.endTime = endTime;
-    } 
+    },
     
+    getEventStart : function(){
+        return eventStart;
+    },
     
+    getEventEnd : function(){
+        return eventEnd;
+    },
+    
+    getHost : function(){
+        return host;
+    },
+    
+    getCategory : function(){
+        return category;
+    },
+    
+    getTitle : function(){
+        return title;
+    },
+    
+    getidEvent : function(){
+        return idevent;
+    },
+    
+    getLocation : function(){
+        return location.getName();
+    },
+    
+    getDescription : function(){
+        return description;
+    },
+    
+    getUsers : function(){
+        return users;
+    },
 };
 
 
