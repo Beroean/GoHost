@@ -11,6 +11,7 @@ User = {
     friendslist: null,
     eventshosting: null,
     eventsattending: null,
+    eventsVisible: null,
     coreUrl: "http://" + window.location.host + "/GoHost/api/",
     
     create: function(iduser){

@@ -1,4 +1,7 @@
+//Include this shit in system_init and move it next to the index.html page
+
 // Set up the buttons on the login page
+
 function setUpButtons() {
 	// Button for submitting login info
 	$('button#login').on('click', LoginHandler);
