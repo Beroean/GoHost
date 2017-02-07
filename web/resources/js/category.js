@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-function  category (idcategory1){
+function  Category (idcategory1){
     this.idcategory = idcategory1;
     this.name = this.getName();
     function getName(){
