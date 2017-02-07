@@ -15,27 +15,22 @@ User = {
     
     create: function(iduser){
         
-    }
+    },
+    
     doLogin: function(email,password) {
         var url = User.coreUrl + "user?email="+$(email).val()+"&password="+$(password).val();
         $.getJSON(url).done(User.receiveUser);
     },
     
-    receiveUser : function(data) {
-        User.iduser = data;
+    receiveUser : function(Data){
+        User.iduser = Data.idUser;
         if(User.iduser !== "0") {
-            User.getEmail();
-            User.getName();
+            sessionStorage.setItem('id',User.iduser);
+            User.email = Data.email;
+            User.name = Data.name;
             User.createFriendsList();
             User.createHostedEventsList();
             User.createEventsAttendingList();
         }
     },
-    
-    getEmail : function(){
-        var url = User.coreUrl + "user?email="+$('#email_field').val()+"&password="+$('#password_field').val();
-        $.getJSON(url).done(User.receiveUser);
-    },
 };
-
-
