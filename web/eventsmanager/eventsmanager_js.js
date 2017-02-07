@@ -8,6 +8,7 @@ var eventStartTimes;
 var eventEndTimes;
 var eventCategories;
 
+
 function getEvents(){
 userID = parseInt(SessionStorage.getItem('id'));
 user.create(userID);
@@ -31,11 +32,24 @@ function getStringsFromEvents(EventsList){
   }
 }
 function getHostStrings(){
-    getStringsFromEvents(eventsHosted)
+    getStringsFromEvents(eventsHosted);
 }
 function getAttendingStrings(){
-    getStringsFromEvents(eventsAttending)
+    getStringsFromEvents(eventsAttending);
 }
 function getVisibleStrings(){
-    getStringsFromEvents(visibleEvents)
+    getStringsFromEvents(visibleEvents);
+}
+function createEvent(){
+    eventTitle = $('#eventTitle').val;
+    eventCat = $('#eventCat').val;
+    eventStart = $('#eventStart').val;
+    eventEnd = $('#eventEnd').val;
+    eventLoc = $('#eventLoc').val;
+    eventVis = $('#eventVis').val;
+    eventAcc = $('#eventAcc').val;
+    maxAttendees = $('#maxAttendees').val;
+    description = $('#description').val;
+    var event = new Event(user.getID(),eventCat, eventStart, eventEnd, description, eventTitle, eventVis, eventAcc, eventLoc);
+    
 }
