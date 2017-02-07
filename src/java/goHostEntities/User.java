@@ -136,4 +136,6 @@ public class User implements Serializable {
         return "goHostEntities.User[ iduser=" + iduser + " ]";
     }
     
+    
+    
 }
