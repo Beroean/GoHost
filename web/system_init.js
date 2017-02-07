@@ -39,6 +39,10 @@ sys_init = {
             $('#regPassWarning').show();
         }
     },
+    
+    loginHandler: function () {
+        window.location.replace = 'home/index.html';
+    },
 
     setUpButtons: function () {
         // Hide the warning divisions upon loading
@@ -47,7 +51,8 @@ sys_init = {
         $('#regPassWarning').hide();
 
         // Button for submitting login info
-        $('button#login').on('click', doLogin);
+        //$('button#login').on('click', doLogin);
+        $('button#login').on('click', loginHandler);
         // Button for creating an account
         $('button#register').on('click', createUser);
     },

@@ -12,6 +12,11 @@
         <style type="text/css">
             body { 
                 padding: 60px 0 0 0;
+                background-color: #2c3e50;
+                /* background-color: #ffffcc; */
+                background-image: url("resources/img/light-paper-fibers.png");
+                /* Background pattern from transparenttextures.com */
+                color: #000033;
             }
             .btn-xl {
                 padding: 15px 2px;
@@ -29,11 +34,17 @@
                 margin-right:30px;
                 text-align:left;
             }
-            .thing {
-                padding: 80px 0 0 0;
-            }
             form {
                 padding: 10px 0 0 0;
+            }
+            .well {
+                background-color: rgba(255,255,255,0.75);
+            }
+            /* Thumbnail */
+
+            .img-responsive-thumbnail {
+                max-width: 100%;
+                height: auto;
             }
         </style>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -149,6 +160,39 @@
                         <li><a href="#regModal" data-toggle="modal" data-target="#regModal" class="btn btn-info btn-xl">Register</a></li>
                     </ul>
                 </div>
+            </div>
+        </div>
+        <div class="container">
+            <br>
+            <div class="well">
+                <br>
+                <div class="row">
+                    <div class="col-lg-offset-1 col-lg-4">
+                        <img class="img-responsive-thumbnail" src="resources/img/BoardGame.jpg" alt="BoardGame">
+                    </div>
+                    <div class="col-lg-offset-2 col-lg-4">
+                        <h1 class="text-info">Host Events</h1>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-offset-1 col-lg-6">
+                        <h1 class="text-info">Join Events</h1>
+                    </div>
+                    <div class="col-lg-4">
+                        <img class="img-responsive-thumbnail" src="resources/img/SoccerBall.jpeg" alt="SoccerBall">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-offset-1 col-lg-4">
+                        <img class="img-responsive-thumbnail" src="resources/img/BeachBall.jpg" alt="BeachBall">
+                    </div>
+                    <div class="col-lg-offset-2 col-lg-4">
+                        <h1 class="text-info">Meet New Friends</h1>
+                    </div>
+                </div>
+                <br>
             </div>
         </div>
 
