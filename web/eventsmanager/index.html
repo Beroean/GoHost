@@ -58,33 +58,81 @@
                     </div>
                 </div>
                 <div class="col-sm-2 col-sm-offset-2">
-                    <button id="createEvent" type="button" class="btn btn-lg btn-info">Create Event</button>
+                    <ul class="nav nav-pills">
+                        <li><a href="#eventModal" data-toggle="modal" data-target="#eventModal" class="btn btn-info btn-lg">Create Event</a></li>
+                    </ul>
                 </div>
                 <div class="modal fade" id="eventModal" role="dialog">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Login</h4>
+                                <h4 class="modal-title">Create An Event</h4>
                             </div>
                             <div class="modal-body">
-                                <form class="form-horizontal" id="loginForm" action="resources/php/login.php" method="POST">
+                                <!-- Change the action/method -->
+                                <form class="form-horizontal" id="eventForm" action="resources/php/login.php" method="POST">
                                     <fieldset>
                                         <div class="form-group">
-                                            <label for="loginEmail" class="col-lg-2 control-label">Email</label>
+                                            <label for="eventTitle" class="col-lg-2 control-label">Title</label>
                                             <div class="col-lg-10">
-                                                <input class="form-control" id="loginEmail" name="loginEmail" placeholder="email@lawrence.edu" type="email">
+                                                <input class="form-control" id="eventTitle" name="eventTitle" placeholder="Event Title" type="text">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="loginPass" class="col-lg-2 control-label">Password</label>
+                                            <label for="eventCat" class="col-lg-2 control-label">Event Type</label>
                                             <div class="col-lg-10">
-                                                <input class="form-control" id="loginPass" name="loginPass" placeholder="Password" type="password">
+                                                <select class="form-control col-lg-10" id="eventCat">
+                                                    <!-- Categories populated from database -->
+                                                </select>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-lg-10 col-lg-offset-2" id="loginWarning">
-                                                <p style="color:red">Username/password do not match.</p>
+                                        <div class="form-group">
+                                            <label for="eventStart" class="col-lg-2 control-label">Start Time</label>
+                                            <div class="col-lg-10">
+                                                <input class="form-control" id="eventStart" name="eventStart" type="datetime-local">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="eventEnd" class="col-lg-2 control-label">End Time</label>
+                                            <div class="col-lg-10">
+                                                <input class="form-control" id="eventEnd" name="eventEnd" type="datetime-local">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="eventLoc" class="col-lg-2 control-label">Location</label>
+                                            <div class="col-lg-10">
+                                                <select class="form-control col-lg-10" id="eventLoc">
+                                                    <!-- Locations populated from database, don't forget "Other" option -->
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="eventVis" class="col-lg-2 control-label">Visibility</label>
+                                            <div class="col-lg-10">
+                                                <select class="form-control col-lg-10" id="eventVis">
+                                                    <!-- Visibilities populated from database -->
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="eventAcc" class="col-lg-2 control-label">Access</label>
+                                            <div class="col-lg-10">
+                                                <select class="form-control" id="eventAcc">
+                                                    <!-- Accesses populated from database -->
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="maxAttendees" class="col-lg-2 control-label">Max Attendees</label>
+                                            <div class="col-lg-10">
+                                                <input class="form-control" id="maxAttendees" name="maxAttendees" type="number">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="description" class="col-lg-2 control-label">Description</label>
+                                            <div class="col-lg-10">
+                                                <textarea class="form-control" rows="5" id="description"></textarea>
                                             </div>
                                         </div>
                                     </fieldset>
@@ -92,7 +140,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button class="btn btn-info" id="login" type="button">Login</button>
+                                <button class="btn btn-info" id="login" type="button">Create</button>
                             </div>
                         </div>
                     </div>
@@ -101,7 +149,7 @@
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script src="js/index.js"></script>
+        <script src="js/eventsmanager.js"></script>
     </body>
 
 </html>
