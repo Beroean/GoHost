@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 function LoginHandler() {
     $.getJSON('http://' + window.location.host + '/GoHost/api/'+'user/login?name='+$('#loginUser').val()+'&password='+$('#loginPass').val()).done(loginCallBack);
 }
@@ -23,20 +24,34 @@ function loginCallBack(Id) {
 	}
 }
 
-coreUrl: "http://" + window.location.host + "/GoHost/api/";
+
 
         
 sys_init = {
-    createUser: function(email, password) {
-        url = coreUrl + "user"
+    coreUrl: "http://" + window.location.host + "/GoHost/api/",
+    
+    
+    doLogin: function() {
+        var url = sys_init.coreUrl + "user?email="+$('#email').val()+"&password="+$('#password').val();
+        $.getJSON(url).done(sys_init.moveToHome);
+    },
+    
+    createUser: function() {
+        var url = coreUrl + "user";
+        var user = {email:$('#create_email').val(),
+                       password:$('#create_password').val()};
+        var toSend = JSON.stringify(user);
         $.ajax({
           url: url,
           type: 'post',
           data: toSend, 
           contentType: 'application/json',
           dataType: 'json',
-          success: Mail.sendOneRecipient
+          success: sys_init.moveToHome
         });
+    },
+    moveToHome: function() {
+        //Take it home!
     }
 }
 

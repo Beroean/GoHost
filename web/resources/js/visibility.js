@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-function  accessibility (idaccess1){
-    this.idaccess = idaccess1;
+function  visibility (idvisibility1){
+    this.idvisibility = idvisibility1;
     this.name = this.getName();
     function getName(){
-        //get the name of the accessibility from the database
+        //get the name of the visibility from the database
     }
     function getID(){
-        return idaccess;
+        return idvisibility;
     }
 };
+

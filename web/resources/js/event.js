@@ -21,7 +21,7 @@ Event = {
     location: null,
     users: null,
     createFromDB: function (idevent) {
-        //fill all the relevant fields from SQL, get accessor from session
+        //fill all the relevant fields from SQL, get accessor from session, create objects
     },
     create: function (idhost, idcategory, eventStart, eventEnd, eventMax, description, title, idvisibility, idaccessibility, idlocation) {
         //creates a user from the idhost, category from idcategory, visibility from idvisibility/idaccessibility, location from idlocation, all other fields are filled from parameters
