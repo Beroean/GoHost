@@ -22,5 +22,8 @@ getEventsAttending: function(){
 getEventsVisible: function(){
   //self explantory (2)  
 },
+getEventsList: function(){
+    return events;
+},
 
 }
