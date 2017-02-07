@@ -13,6 +13,9 @@ User = {
     eventsattending: null,
     coreUrl: "http://" + window.location.host + "/GoHost/api/",
     
+    create: function(iduser){
+        
+    }
     doLogin: function(email,password) {
         var url = User.coreUrl + "user?email="+$(email).val()+"&password="+$(password).val();
         $.getJSON(url).done(User.receiveUser);

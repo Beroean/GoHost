@@ -5,14 +5,20 @@
  */
 var emailField = '#email_field';
 var passField = '#pass_field';
-var User = Object
+var thisUser = Object
 
 function doLogin () {
-    User = new Object()
-    User.doLogin(emailField, passField);
+    var User = new Object();
+     User.doLogin(emailField, passField);
 }
 function doCreate() {
-    
+    var sys_init = new Object();
+     sys_init.createAccount(createEmail, createPass);
+}
+function getHosted() {
+    var eventsList = new EventsList(thisUser, 1)
+    list = 
+
 }
 
 
