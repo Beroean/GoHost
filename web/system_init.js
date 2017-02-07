@@ -29,8 +29,8 @@ sys_init = {
             });
         }
     },
-    moveToHome: function () {
-        if (Id != 0) {
+    moveToHome: function (data) {
+        if (data.iduser != 0) {
             // Storing the id number of the user
             sessionStorage.setItem('id', Id);
             //Take them to home page
