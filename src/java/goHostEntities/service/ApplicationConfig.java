@@ -31,6 +31,7 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(goHostEntities.service.AttendeeFacadeREST.class);
         resources.add(goHostEntities.service.CategoryFacadeREST.class);
+        resources.add(goHostEntities.service.EventFacadeREST.class);
         resources.add(goHostEntities.service.FriendFacadeREST.class);
         resources.add(goHostEntities.service.InvitedFacadeREST.class);
         resources.add(goHostEntities.service.LocationFacadeREST.class);
