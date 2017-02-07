@@ -26,10 +26,8 @@ function loginCallBack(Id) {
         
 sys_init = {
     coreUrl: "http://" + window.location.host + "/GoHost/api/",
-    
-    
     doLogin: function() {
-        var url = sys_init.coreUrl + "user?email="+$('#email').val()+"&password="+$('#password').val();
+        var url = sys_init.coreUrl + "user?email="+$('#loginEmail').val()+"&password="+$('#loginPass').val();
         $.getJSON(url).done(sys_init.moveToHome);
     },
     
@@ -44,11 +42,20 @@ sys_init = {
           data: toSend, 
           contentType: 'application/json',
           dataType: 'json',
-          success: sys_init.moveToHome
+          success: /*hide this div and show the log in div*/
         });
     },
     moveToHome: function() {
-        //Take it home!
+        if(Id != 0){
+            // Storing the id number of the user
+            sessionStorage.setItem('id',Id);
+            //Take them to home page
+        } else {
+            $('#regPassWarning').show();
+        }
+    },
+    setUpIndex: function() {
+        //This sets up the index.html page complete with hiding certain divs
+        //shit
     }
 }
-
