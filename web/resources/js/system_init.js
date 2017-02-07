@@ -4,25 +4,6 @@
  * and open the template in the editor.
  */
 
-function LoginHandler() {
-    $.getJSON('http://' + window.location.host + '/GoHost/api/' + 'user/login?name=' + $('#loginUser').val() + '&password=' + $('#loginPass').val()).done(loginCallBack);
-}
-
-function loginCallBack(Id) {
-    if (Id != 0) {
-        // Storing the id number of the user
-        sessionStorage.setItem('id', Id);
-        // Store the username for future use
-        sessionStorage.setItem('username', $('#loginUser').val());
-        // If the account exists, open a new page
-        window.location.href = 'Home.html#' + Id;
-    } else {
-        // If the account doesn't exist, show a text field saying that the account entered does not exist
-        $('#loginUser').val('Your desired username is unfortunately already in use...');
-        $('#test').show();
-    }
-}
-
 sys_init = {
     coreUrl: "http://" + window.location.host + "/GoHost/api/",
     doLogin: function () {
@@ -31,6 +12,10 @@ sys_init = {
     },
 
     createUser: function () {
+        if($('#regPass').val() != $('#regPassConf').val()){
+		$('#regPassWarning').show();
+	}
+	else{
         var url = coreUrl + "user";
         var user = {email: $('#create_email').val(),
             password: $('#create_password').val()};
@@ -43,8 +28,9 @@ sys_init = {
             dataType: 'json',
             success: /*hide this div and show the log in div*/
         });
+        }
     },
-    moveToHome: function () {
+    moveToHome : function () {
         if (Id != 0) {
             // Storing the id number of the user
             sessionStorage.setItem('id', Id);
@@ -53,8 +39,18 @@ sys_init = {
             $('#regPassWarning').show();
         }
     },
-    setUpIndex: function () {
-        //This sets up the index.html page complete with hiding certain divs
-        //shit
-    }
+    
+    setUpButtons : function () {
+	// Button for submitting login info
+	$('button#login').on('click', doLogin);
+	// Button for creating an account
+	$('button#register').on('click', createUser);
+
+	// Hide the warning divisions upon loading
+	$('#loginWarning').hide();
+	$('#regWarning').hide();
+	$('#regPassWarning').hide();
+    },
 }
+
+$(document).ready(sys_init.setUpButtons);
