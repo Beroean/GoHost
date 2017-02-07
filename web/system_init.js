@@ -11,7 +11,7 @@ sys_init = {
         $.getJSON(url).done(sys_init.moveToHome);
     },
 
-    createUser: function () {
+    createUser: function() {
         if ($('#regPass').val() !== $('#regPassConf').val()) {
             $('#regPassWarning').show();
         } else {
@@ -29,7 +29,7 @@ sys_init = {
             });
         }
     },
-    moveToHome: function (data) {
+    moveToHome: function(data) {
         if (data.iduser != 0) {
             // Storing the id number of the user
             sessionStorage.setItem('id', data.iduser);
@@ -40,16 +40,16 @@ sys_init = {
         }
     },
 
-    setUpButtons: function () {
-        // Button for submitting login info
-        $('button#login').on('click', doLogin);
-        // Button for creating an account
-        $('button#register').on('click', createUser);
-
+    setUpButtons: function() {
         // Hide the warning divisions upon loading
         $('#loginWarning').hide();
         $('#regWarning').hide();
         $('#regPassWarning').hide();
+        
+        // Button for submitting login info
+        $('button#login').on('click', doLogin);
+        // Button for creating an account
+        $('button#register').on('click', createUser);
     },
 }
 
