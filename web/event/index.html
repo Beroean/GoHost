@@ -9,6 +9,11 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="../resources/js/bootstrap.js"></script>
         <script src="https://use.fontawesome.com/4ba65f929c.js"></script>
+        <style type="text/css">
+            body { 
+                padding: 60px 0 0 0;
+            }
+        </style>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
@@ -21,21 +26,45 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" class="blogTitle" href="#">GoHost</a>
+                    <a class="navbar-brand" class="blogTitle" href="../home/index.html">GoHost</a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><i class="fa fa-calendar fa-fw"></i></a></li>
-                    <li><a href="#"><i class="fa fa-user-o fa-fw"></i></a></li>
-                    <li><a href="#"><i class="fa fa-bell-o fa-fw"></i></a></li>
-                    <li><a href="#">Logout</a></li>
+                    <li><a href="../eventsmanager/index.html"><i class="fa fa-calendar fa-fw"></i></a></li>
+                    <li><a href="../people/index.html"><i class="fa fa-user-o fa-fw"></i></a></li>
+                    <li><a href="../notifications/index.html"><i class="fa fa-bell-o fa-fw"></i></a></li>
+                    <li><a href="../index.html">Logout</a></li>
                 </ul>
             </div>
         </div>
         <div class="container">
+            <br>
             <!-- Maybe set up a table or list for all of the event information, where tapping them allows for change -->
-            <div>
-                <h3><!-- Insert Event Name --></h3>
+            <div class="row">
+                <div class="col-lg-8">
+                    <h3 id="eventName"><!-- Insert Event Name -->Event Name</h3>
+                    <hr>
+                    <div>
+                        <p id="time">time</p>
+                    </div>
+                    <hr>
+                    <div>
+                        <p id="location">place</p>
+                    </div>
+                    <hr>
+                    <div>
+                        <p id="etc">etc</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-lg-offset-2">
+                    <a class="btn btn-info" href="#" aria-label="Invite">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </a>
+                    <a class="btn btn-info" href="#" aria-label="Edit">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
+
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
