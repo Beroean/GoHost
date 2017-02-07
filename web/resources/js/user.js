@@ -15,7 +15,8 @@ User = {
     
     create: function(iduser){
         
-    }
+    },
+    
     doLogin: function(email,password) {
         var url = User.coreUrl + "user?email="+$(email).val()+"&password="+$(password).val();
         $.getJSON(url).done(User.receiveUser);
@@ -33,5 +34,3 @@ User = {
         }
     },
 };
-
-
