@@ -51,8 +51,8 @@ sys_init = {
         $('#regPassWarning').hide();
 
         // Button for submitting login info
-        //$('button#login').on('click', doLogin);
-        $('button#login').on('click', loginHandler);
+        //$('button#login').on('click', sys_init.doLogin);
+        $('button#login').on('click',sys_init.loginHandler);
         // Button for creating an account
         $('button#register').on('click', createUser);
     },
