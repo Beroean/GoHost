@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 
-function  accessibility (idaccess1){
-    this.idaccess = idaccess1;
+function  category (idcategory1){
+    this.idcategory = idcategory1;
     this.name = this.getName();
     function getName(){
-        //get the name of the accessibility from the database
+        //get the name of the category from the database
     }
     function getID(){
-        return idaccess;
+        return idcategory;
     }
 };
