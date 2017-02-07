@@ -14,7 +14,9 @@ User = {
     coreUrl: "http://" + window.location.host + "/GoHost/api/",
     
     create: function(iduser){
-        
+        //This will use the iduser stored in the session by system_init to
+        //create and populate a user object. After that, it will use other
+        //objects to populate friends list, eventslist...
     },
     
     doLogin: function(email,password) {
