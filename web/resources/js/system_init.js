@@ -23,9 +23,6 @@ function loginCallBack(Id) {
 		$('#test').show();
 	}
 }
-
-
-
         
 sys_init = {
     coreUrl: "http://" + window.location.host + "/GoHost/api/",
