@@ -15,15 +15,10 @@ User = {
     
     create: function(iduser){
         //This will use the iduser stored in the session by system_init to
-        //create and populate a user object. After that, it will use other
+        //create and populate a user object from an already created user row in
+        //the database. After that, it will use other
         //objects to populate friends list, eventslist...
     },
-    
-    doLogin: function(email,password) {
-        var url = User.coreUrl + "user?email="+$(email).val()+"&password="+$(password).val();
-        $.getJSON(url).done(User.receiveUser);
-    },
-    
     receiveUser : function(Data){
         User.iduser = Data.idUser;
         if(User.iduser !== "0") {
