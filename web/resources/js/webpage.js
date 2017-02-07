@@ -3,9 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+var emailField = '#email_field';
+var passField = '#pass_field';
+var User = Object
 
-doLogin: function() {
-    User.doLogin('#email_field', '#password_field');
+function doLogin () {
+    User = new Object()
+    User.doLogin(emailField, passField);
+}
+function doCreate() {
+    
 }
 
 
