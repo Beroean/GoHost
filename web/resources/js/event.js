@@ -43,7 +43,7 @@ Event = {
         return false;
     },
     closeEvent: function () {
-        access = new accessibility(this, 3)
+        access = new accessibility(3)
         this.accessibility = access;
     },
     deleteEvent: function () {
