@@ -16,8 +16,8 @@ sys_init = {
             $('#regPassWarning').show();
         } else {
             var url = coreUrl + "user";
-            var user = {email: $('#create_email').val(),
-                password: $('#create_password').val()};
+            var user = {email: $('#regEmail').val(),
+                password: $('#regPass').val()};
             var toSend = JSON.stringify(user);
             $.ajax({
                 url: url,
@@ -25,7 +25,7 @@ sys_init = {
                 data: toSend,
                 contentType: 'application/json',
                 dataType: 'json',
-                success: sys_init.moveToHome,
+                success: sys_init.moveToHome
             });
         }
     },
