@@ -1,0 +1,3 @@
+wrong email/password combo check - high
+setup facebook login - low
+index.js reference at the bottom of each page
