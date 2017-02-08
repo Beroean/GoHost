@@ -5,18 +5,15 @@
         <!-- Add description + keywords -->
         <meta name="description" content="" />
         <meta name="keywords" content="" />
-        <link href="resources/css/main.css" rel="stylesheet" type="text/css">
-        <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="assets/css/main.css" rel="stylesheet" type="text/css">
+        <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script src="resources/js/bootstrap.js"></script>
+        <script src="assets/js/bootstrap.js"></script>
+        <script src="https://use.fontawesome.com/4ba65f929c.js"></script>
         <style type="text/css">
             body { 
                 padding: 60px 0 0 0;
                 background-color: #2c3e50;
-                /* background-color: #ffffcc; */
-                background-image: url("resources/img/light-paper-fibers.png");
-                /* Background pattern from transparenttextures.com */
-                color: #000033;
             }
             .btn-xl {
                 padding: 15px 2px;
@@ -24,11 +21,6 @@
                 line-height: 1.33;
                 border-radius: 4px
             }
-            /*.btn-xl:hover {
-                color: #fff;
-                background-color: #00b3db;
-                border-color: #285e8e; /*set the color you want here*/
-
             p label {
                 width:200px;
                 margin-right:30px;
@@ -37,14 +29,10 @@
             form {
                 padding: 10px 0 0 0;
             }
-            .well {
-                background-color: rgba(255,255,255,0.75);
-            }
-            /* Thumbnail */
-
-            .img-responsive-thumbnail {
-                max-width: 100%;
-                height: auto;
+            @media (max-width: 768px) {
+                #Welcome {
+                    text-align: center;
+                } 
             }
         </style>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -79,19 +67,19 @@
                         <form class="form-horizontal" id="loginForm" action="resources/php/login.php" method="POST">
                             <fieldset>
                                 <div class="form-group">
-                                    <label for="loginEmail" class="col-lg-2 control-label">Email</label>
-                                    <div class="col-lg-10">
+                                    <label for="loginEmail" class="col-sm-2 control-label">Email</label>
+                                    <div class="col-sm-10">
                                         <input class="form-control" id="loginEmail" name="loginEmail" placeholder="email@lawrence.edu" type="email">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="loginPass" class="col-lg-2 control-label">Password</label>
-                                    <div class="col-lg-10">
+                                    <label for="loginPass" class="col-sm-2 control-label">Password</label>
+                                    <div class="col-sm-10">
                                         <input class="form-control" id="loginPass" name="loginPass" placeholder="Password" type="password">
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-10 col-lg-offset-2" id="loginWarning">
+                                    <div class="col-sm-10 col-lg-offset-2" id="loginWarning">
                                         <p style="color:red">Username/password do not match.</p>
                                     </div>
                                 </div>
@@ -105,94 +93,75 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="regModal" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Register</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal" id="regForm" action="resources/php/register.php" method="POST">
-                            <fieldset>
-                                <div class="form-group">
-                                    <label for="regEmail" class="col-lg-2 control-label">Email</label>
-                                    <div class="col-lg-10">
-                                        <input class="form-control" id="regEmail" name="regEmail" placeholder="email@lawrence.edu" type="email">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="regPass" class="col-lg-2 control-label">Password</label>
-                                    <div class="col-lg-10">
-                                        <input class="form-control" id="regPass" name="regPass" placeholder="Password" type="password">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="regPassConf" class="col-lg-2 control-label">Confirm Password</label>
-                                    <div class="col-lg-10">
-                                        <input class="form-control" id="regPassConf" placeholder="Confirm Password" type="password">
-                                    </div>
-                                </div>
-                                <div class="col-lg-10 col-lg-offset-2" id="regWarning">
-                                    <p style="color:red">Your desired username is already in use.</p>
-                                </div>
-                                <div class="col-lg-10 col-lg-offset-2" id="regPassWarning">
-                                    <p style="color:red">The passwords do not match.</p>
-                                </div>
-                                <!-- put warnings in span? so appear on the same line -->
-                            </fieldset>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button class="btn btn-info" id="register" type="button">Register</button>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="parallax">
             <div class="container">
                 <br>
                 <div class="jumbotron">
-                    <h1 class="text-">Welcome to GoHost</h1>
-                    <p>Start Hosting Your Own Events Today!</p>
-                    <ul class="nav nav-pills">
-                        <li><a href="#regModal" data-toggle="modal" data-target="#regModal" class="btn btn-info btn-xl">Register</a></li>
-                    </ul>
+                    <div class="row">
+                        <h1 id="Welcome">Welcome to GoHost</h1>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-push-6 col-sm-6">
+                            <form class="form-horizontal" id="regForm">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label for="regEmail" class="col-md-2 control-label">Email</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" id="regEmail" name="regEmail" placeholder="email@lawrence.edu" type="email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="regPass" class="col-md-2 control-label">Password</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" id="regPass" name="regPass" placeholder="Password" type="password">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="regPassConf" class="col-md-2 control-label">Confirm Password</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" id="regPassConf" placeholder="Confirm Password" type="password">
+                                        </div>
+                                    </div>
+                                    <!-- put warnings in span? so appear on the same line -->
+                                    <hr>
+                                    <div class="col-sm-offset-2">
+                                        <input class="btn btn-info" type="submit" id="register" value="Create Account">
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="col-sm-pull-6 col-sm-6">
+                            <div class="row">
+                                <div class="col-xs-3 text-primary">
+                                    <i class="fa fa-futbol-o fa-fw fa-4x"></i>
+                                </div>
+                                <div class="col-xs-9">
+                                    <h2>Find nearby events.</h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-3 text-primary">
+                                    <i class="fa fa-gamepad fa-fw fa-4x"></i>
+                                </div>
+                                <div class="col-xs-9">
+                                    <h2>Meet new friends.</h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-3 text-primary">
+                                    <i class="fa fa-calendar fa-fw fa-4x"></i>
+                                </div>
+                                <div class="col-xs-9">
+                                    <h2>Go host your own events.</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
-        </div>
-        <div class="container">
-            <br>
-            <div class="well">
-                <br>
-                <div class="row">
-                    <div class="col-lg-offset-1 col-lg-4">
-                        <img class="img-responsive-thumbnail" src="resources/img/BoardGame.jpg" alt="BoardGame">
-                    </div>
-                    <div class="col-lg-offset-2 col-lg-4">
-                        <h1 class="text-info">Host Events</h1>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-lg-offset-1 col-lg-6">
-                        <h1 class="text-info">Join Events</h1>
-                    </div>
-                    <div class="col-lg-4">
-                        <img class="img-responsive-thumbnail" src="resources/img/SoccerBall.jpeg" alt="SoccerBall">
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-lg-offset-1 col-lg-4">
-                        <img class="img-responsive-thumbnail" src="resources/img/BeachBall.jpg" alt="BeachBall">
-                    </div>
-                    <div class="col-lg-offset-2 col-lg-4">
-                        <h1 class="text-info">Meet New Friends</h1>
-                    </div>
-                </div>
-                <br>
             </div>
         </div>
 

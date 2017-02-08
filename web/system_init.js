@@ -5,7 +5,8 @@
  */
 
 sys_init = {
-    coreUrl: "http://" + window.location.host + "/GoHost/api/",
+    // changed .host to .hostname
+    coreUrl: "http://" + window.location.hostname + "/GoHost/api/",
     doLogin: function () {
         var url = sys_init.coreUrl + "user?email=" + $('#loginEmail').val() + "&password=" + $('#loginPass').val();
         $.getJSON(url).done(sys_init.moveToHome);
@@ -34,27 +35,30 @@ sys_init = {
             // Storing the id number of the user
             sessionStorage.setItem('id', data.iduser);
             //Take them to home page
-            window.location.href = 'home/index.html#' + data.iduser;
+            // deleted ".href", maybe this will work
+            window.location = 'home/index.html#' + data.iduser;
         } else {
-            $('#regPassWarning').show();
+            $('#regWarning').show();
         }
     },
-    
+
     loginHandler: function () {
-        window.location.replace = 'home/index.html';
+        window.location = 'home/index.html';
     },
 
     setUpButtons: function () {
         // Hide the warning divisions upon loading
         $('#loginWarning').hide();
-        $('#regWarning').hide();
-        $('#regPassWarning').hide();
+        // I've removed these two warnings for now
+        //$('#regWarning').hide();
+        //$('#regPassWarning').hide
 
         // Button for submitting login info
         //$('button#login').on('click', sys_init.doLogin);
-        $('button#login').on('click',sys_init.loginHandler);
+        // This is to simulate the login
+        $('button#login').on('click', sys_init.loginHandler);
         // Button for creating an account
-        $('button#register').on('click', createUser);
+        $('button#register').on('click', sys_init.createUser);
     },
 }
 
