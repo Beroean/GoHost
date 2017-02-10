@@ -1,32 +1,65 @@
-//Include this shit in system_init and move it next to the index.html page
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
-// Set up the buttons on the login page
+sys_init = {
+    // changed .host to .hostname
+    coreUrl: "http://" + window.location.hostname + "/GoHost/api/",
+    doLogin: function () {
+        var url = sys_init.coreUrl + "user?email=" + $('#loginEmail').val() + "&password=" + $('#loginPass').val();
+        $.getJSON(url).done(sys_init.moveToHome);
+    },
 
-function setUpButtons() {
-    // Button for submitting login info
-    $('button#login').on('click', LoginHandler);
-    // Button for creating an account
-    $('button#register').on('click', RegisterHandler);
+    createUser: function () {
+        if ($('#regPass').val() !== $('#regPassConf').val()) {
+            $('#regPassWarning').show();
+        } else {
+            var url = coreUrl + "user";
+            var user = {email: $('#regEmail').val(),
+                password: $('#regPass').val()};
+            var toSend = JSON.stringify(user);
+            $.ajax({
+                url: url,
+                type: 'post',
+                data: toSend,
+                contentType: 'application/json',
+                dataType: 'json',
+                success: sys_init.moveToHome
+            });
+        }
+    },
+    moveToHome: function (data) {
+        if (data.iduser != 0) {
+            // Storing the id number of the user
+            sessionStorage.setItem('id', data.iduser);
+            //Take them to home page
+            // deleted ".href", maybe this will work
+            window.location = 'home/index.html#' + data.iduser;
+        } else {
+            $('#regWarning').show();
+        }
+    },
 
-    // Hide the warning divisions upon loading
-    $('#loginWarning').hide();
-    $('#regWarning').hide();
-    $('#regPassWarning').hide();
+    loginHandler: function () {
+        window.location = 'home/index.html';
+    },
+
+    setUpButtons: function () {
+        // Hide the warning divisions upon loading
+        $('#loginWarning').hide();
+        // I've removed these two warnings for now
+        //$('#regWarning').hide();
+        //$('#regPassWarning').hide
+
+        // Button for submitting login info
+        //$('button#login').on('click', sys_init.doLogin);
+        // This is to simulate the login
+        $('button#login').on('click', sys_init.loginHandler);
+        // Button for creating an account
+        $('button#register').on('click', sys_init.createUser);
+    },
 }
 
-// Connect the event handler to the document
-$(window).load(setUpButtons);
-
-// Event handler for the login button
-function LoginHandler() {
-    $("#loginForm").submit();
-}
-
-//Event handler for the register button
-function RegisterHandler() {
-    if ($('#regPass').val() != $('#regPassConf').val()) {
-        $('#regPassWarning').show();
-    } else {
-        $("#regForm").submit();
-    }
-}
+$(document).ready(sys_init.setUpButtons);
