@@ -10,7 +10,15 @@ eventsList = {
     viewType: 0, // 0 means view events hosting, 1 means events attending, 2 means all visible events
 
     create: function (accessor, viewType) {
-        //get events into the list based on viewtype and accessor, then create events using idevent/populate using later methods
+        if (viewType == 0){
+            getEventsHosting();
+        } else if (viewType == 1){
+            getEventsAttending();
+        } else if (viewType == 2){
+            getEventsVisible();
+        }
+        this.accessor = accessor;
+        this.viewType = viewType
 
     },
     getEventsHosting: function () {

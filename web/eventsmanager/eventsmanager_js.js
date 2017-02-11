@@ -1,7 +1,7 @@
 var eventsHosted = null
 var eventsAttending = null
 var visibleEvents = null
-var user = new User();
+var user = null
 var eventTitles;
 var eventHosts;
 var eventStartTimes;
@@ -11,6 +11,7 @@ var eventCategories;
 
 function getEvents(){
 userID = parseInt(SessionStorage.getItem('id'));
+user = new User();
 user.create(userID);
 eventsHosted = user.getEventsHosted();
 eventsAttending = user.getEventsAttending();
