@@ -42,11 +42,6 @@ Event = {
         location = new Location(data.idlocation);
         visibility = new Visibility(data.idvisibility);
         accessibility = new Accessibility(data.idaccessibility);
-        //Two lists need to be created. One is the list of invited users
-        //The other is a list of the users already in the event
-        //These will be arrays that will hold a bunch of ids
-        //Two callback functions will have to be written
-        //I'll get the ids from the invited and attendee tables
         var url = Event.coreUrl + "invited?idevent="+$(idevent).val();
         $.getJSON(url).done(Event.invitedFollowUp);
         var url1 = Event.coreUrl + "attendee?idevent="+$(idevent).val();
@@ -56,8 +51,6 @@ Event = {
     invitedFollowUp: function(data){
         invitedUsers = [];
         for (n=0; n<data.length;n++){
-            //Do you want an array of idinviteds or idusers?
-            //I'm guessing idusers
             invitedUsers[n] = data[n].iduser;
         }
     },
@@ -65,8 +58,6 @@ Event = {
     attendeeFollowUp: function(data){
         users = [];
         for (n=0; n<data.length;n++){
-            //Do you want an array of idattendees or idusers?
-            //I'm guessing idusers
             users[n] = data[n].iduser;
         }
     },
@@ -74,7 +65,22 @@ Event = {
     create: function (idhost, idcategory, eventStart, eventEnd, eventMax, description, title, idvisibility, idaccessibility, idlocation) {
         //creates a user from the idhost, category from idcategory, visibility from idvisibility/idaccessibility, location from idlocation, all other fields are filled from parameters
         //if accessibility is 1, add all friends to invited list. Add the created object to the database.
+        var event = {title, idhost, eventMax, idlocation, idvisibility, idaccessibility, eventStart, eventEnd, description, idcategory};
+		$.ajax({
+		  url:'http://143.44.10.35/GoHost/api/event',
+		  type:'POST',
+		  data:JSON.stringify(event),
+		  contentType:'application/json',
+		  dataType:'json',
+		  success: createFollowUp
+		});
     },
+    
+    createFollowUp: function(id){
+        //Stores the id of the event row recently added to the database
+        idevent = id;
+    },
+    
     isAccessorHost: function () {
         if (this.accessor.getID() == this.host.getID()) {
             return true
