@@ -9,6 +9,7 @@ var eventEndTimes;
 var eventCategories;
 
 
+
 function getEvents(){
 userID = parseInt(SessionStorage.getItem('id'));
 user = new User();
