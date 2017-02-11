@@ -40,24 +40,28 @@ User = {
             sessionStorage.setItem('id',User.iduser);
             User.email = Data.email;
             User.name = Data.name;
-            User.createFriendsList();
-            User.createHostedEventsList();
-            User.createEventsAttendingList();
+
+
+            
         }
     },
     getID: function(){
         return iduser;
     },
     getEventsAttending: function(){
+        User.createEventsAttendingList();
         return eventsAttending;
     },
     getVisibleEvents: function(){
+        User.createVisibleList;
         return eventsVisible;
     },
     getFriendsList: function(){
+                    User.createFriendsList();
         return friendsList;
     },
     getEventsHosting: function(){
+                    User.createHostedEventsList();
         return eventsHosting;
     }
     
