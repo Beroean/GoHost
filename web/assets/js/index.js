@@ -7,6 +7,7 @@
 sys_init = {
     // changed .host to .hostname
     coreUrl: "http://" + window.location.hostname + "/GoHost/api/",
+    
     doLogin: function () {
         var url = sys_init.coreUrl + "user?email=" + $('#loginEmail').val() + "&password=" + $('#loginPass').val();
         $.getJSON(url).done(sys_init.moveToHome);
@@ -42,10 +43,6 @@ sys_init = {
         }
     },
 
-    loginHandler: function () {
-        window.location = 'home/index.html';
-    },
-
     setUpButtons: function () {
         // Hide the warning divisions upon loading
         $('#loginWarning').hide();
@@ -56,7 +53,7 @@ sys_init = {
         // Button for submitting login info
         //$('button#login').on('click', sys_init.doLogin);
         // This is to simulate the login
-        $('button#login').on('click', sys_init.loginHandler);
+        $('button#login').on('click', sys_init.doLogin);
         // Button for creating an account
         $('button#register').on('click', sys_init.createUser);
     },
