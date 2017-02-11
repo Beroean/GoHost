@@ -53,8 +53,22 @@ Event = {
         $.getJSON(url1).done(Event.attendeeFollowUp);
     },
     
-    create: function(data){
-        
+    invitedFollowUp: function(data){
+        invitedUsers = [];
+        for (n=0; n<data.length;n++){
+            //Do you want an array of idinviteds or idusers?
+            //I'm guessing idusers
+            invitedUsers[n] = data[n].iduser;
+        }
+    },
+    
+    attendeeFollowUp: function(data){
+        users = [];
+        for (n=0; n<data.length;n++){
+            //Do you want an array of idattendees or idusers?
+            //I'm guessing idusers
+            users[n] = data[n].iduser;
+        }
     },
     
     create: function (idhost, idcategory, eventStart, eventEnd, eventMax, description, title, idvisibility, idaccessibility, idlocation) {
