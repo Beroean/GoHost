@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-function  location (idlocation1){
+function  Location (idlocation1){
     this.idlocation = idlocation1;
     this.name = this.getName();
     function getName(){

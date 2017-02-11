@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-function  visibility (idvisibility1){
+function  Visibility (idvisibility1){
     this.idvisibility = idvisibility1;
     this.name = this.getName();
     function getName(){

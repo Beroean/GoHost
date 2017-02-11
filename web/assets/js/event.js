@@ -9,6 +9,8 @@ Event = {
     host: null,
     category: null,
     accessor: null,
+    //This is being used for both created events and events pulled from db
+    //Might create problems in the future
     idevent: 0,
     chat: null,
     eventStart: 0,
@@ -32,7 +34,6 @@ Event = {
         Event.accessor = parseInt(sessionStorage.getItem('id'));
         Event.host = Event.accessor;
         idevent = data.idevent;
-        category = new Category(data.idcategory);
         chat = null;//Add this in iteration 2.0
         eventStart = data.starttime;
         eventEnd = data.endtime;
@@ -42,6 +43,7 @@ Event = {
         location = new Location(data.idlocation);
         visibility = new Visibility(data.idvisibility);
         accessibility = new Accessibility(data.idaccessibility);
+        category = new Category(data.idcategory);
         var url = Event.coreUrl + "invited?idevent="+$(idevent).val();
         $.getJSON(url).done(Event.invitedFollowUp);
         var url1 = Event.coreUrl + "attendee?idevent="+$(idevent).val();
@@ -100,8 +102,35 @@ Event = {
         access = new accessibility(3)
         this.accessibility = access;
     },
+    
+    //deletes all mentions of event from database
     deleteEvent: function () {
-        //delete all mentions of event from database
+                //Deletes event from event table
+		$.ajax({
+		  url:'http://143.44.10.35/GoHost/api/event$idevent=' + idevent,
+		  type:'DELETE'
+		});
+                //Deletes all attendee rows of this event
+                $.ajax({
+		  url:'http://143.44.10.35/GoHost/api/attendee$idevent=' + idevent,
+		  type:'DELETE'
+		});
+                //Delets all invited rows of this evnet
+                $.ajax({
+		  url:'http://143.44.10.35/GoHost/api/invited$idevent=' + idevent,
+		  type:'DELETE'
+		});
+                //Delets all messages of this event
+                $.ajax({
+		  url:'http://143.44.10.35/GoHost/api/message$idevent=' + idevent,
+		  type:'DELETE'
+		});
+                //Deletes all notifications of this event
+                $.ajax({
+		  url:'http://143.44.10.35/GoHost/api/notification$idevent=' + idevent,
+		  type:'DELETE'
+		});
+        //Do you want a callback function to this?
     },
     isEventFull: function () {
         if (this.accessibility.getID() == 3) {

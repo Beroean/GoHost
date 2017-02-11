@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-function  accessibility (idaccess1){
+function  Accessibility (idaccess1){
     this.idaccess = idaccess1;
     this.name = this.getName();
     function getName(){
