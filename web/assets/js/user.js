@@ -14,11 +14,24 @@ User = {
     eventsVisible: null,
     coreUrl: "http://" + window.location.host + "/GoHost/api/",
     
+    
     create: function(iduser){
         //This will use the iduser stored in the session by system_init to
         //create and populate a user object from an already created user row in
         //the database. After that, it will use other
         //objects to populate friends list, eventslist...
+    },
+    createFriendsList: function(){
+        
+    },
+        createHostedEventsList: function(){
+        
+    },
+        createEventsAttendingList: function(){
+        
+    },
+        createVisibleList: function(){
+        
     },
     receiveUser : function(Data){
         User.iduser = Data.idUser;
@@ -31,4 +44,10 @@ User = {
             User.createEventsAttendingList();
         }
     },
+    getID: function(){
+        return iduser;
+    },
+    getEventsAttending: function(){
+        
+    }
 };
