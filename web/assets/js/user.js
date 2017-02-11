@@ -22,16 +22,16 @@ User = {
         //objects to populate friends list, eventslist...
     },
     createFriendsList: function(){
-        
+        friendsList = new FriendsList(iduser);
     },
-        createHostedEventsList: function(){
-        
+    createHostedEventsList: function(){
+        eventsHosting = new EventsList(iduser, 0);
     },
-        createEventsAttendingList: function(){
-        
+    createEventsAttendingList: function(){
+        eventsAttending = new EventsList(iduser, 1);
     },
-        createVisibleList: function(){
-        
+    createVisibleList: function(){
+        eventsVisible = new EventsList(iduser, 2);
     },
     
     receiveUser : function(Data){
@@ -57,11 +57,11 @@ User = {
         return eventsVisible;
     },
     getFriendsList: function(){
-                    User.createFriendsList();
+        User.createFriendsList();
         return friendsList;
     },
     getEventsHosting: function(){
-                    User.createHostedEventsList();
+        User.createHostedEventsList();
         return eventsHosting;
     }
     
