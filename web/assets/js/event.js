@@ -8,6 +8,7 @@ Event = {
     host: null,
     category: null,
     accessor: null,
+    idevent: 0,
     chat: null,
     eventStart: 0,
     eventEnd: 0,
@@ -17,7 +18,6 @@ Event = {
     visibility: null,
     accessibility: null,
     invitedUsers: null,
-    idevent: 0,
     location: null,
     users: null,
     coreUrl: "http://" + window.location.host + "/GoHost/api/",
@@ -30,6 +30,7 @@ Event = {
     createFollowUp: function(data){
         Event.accessor = parseInt(sessionStorage.getItem('id'));
         Event.host = Event.accessor;
+        idevent = data.idevent;
         category = new Category(data.idcategory);
         chat = null;//Add this in iteration 2.0
         eventStart = data.starttime;
@@ -37,9 +38,13 @@ Event = {
         eventMax = data.maxattendees;
         description = data.description;
         title = data.title;
-        visibility = new Visibility(data.idinvisibility);
+        visibility = new Visibility(data.idvisibility);
         accessibility = new Accessibility(data.idaccessibility);
-        
+        //How do I create the invited users object!?
+        //It will be a different function that populates an array of ids
+        //I'll get the ids from the invited table 
+        var url = Event.coreUrl + "invited?idevent="+$(idevent).val();
+        $.getJSON(url).done(Event.createFollowUp);
     },
     
     create: function (idhost, idcategory, eventStart, eventEnd, eventMax, description, title, idvisibility, idaccessibility, idlocation) {
