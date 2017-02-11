@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+//Investigate if all the urls are correct
 Event = {
     host: null,
     category: null,
@@ -38,13 +39,22 @@ Event = {
         eventMax = data.maxattendees;
         description = data.description;
         title = data.title;
+        location = new Location(data.idlocation);
         visibility = new Visibility(data.idvisibility);
         accessibility = new Accessibility(data.idaccessibility);
-        //How do I create the invited users object!?
-        //It will be a different function that populates an array of ids
-        //I'll get the ids from the invited table 
+        //Two lists need to be created. One is the list of invited users
+        //The other is a list of the users already in the event
+        //These will be arrays that will hold a bunch of ids
+        //Two callback functions will have to be written
+        //I'll get the ids from the invited and attendee tables
         var url = Event.coreUrl + "invited?idevent="+$(idevent).val();
-        $.getJSON(url).done(Event.createFollowUp);
+        $.getJSON(url).done(Event.invitedFollowUp);
+        var url1 = Event.coreUrl + "attendee?idevent="+$(idevent).val();
+        $.getJSON(url1).done(Event.attendeeFollowUp);
+    },
+    
+    create: function(data){
+        
     },
     
     create: function (idhost, idcategory, eventStart, eventEnd, eventMax, description, title, idvisibility, idaccessibility, idlocation) {
