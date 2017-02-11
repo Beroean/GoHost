@@ -20,9 +20,9 @@ Event = {
     title: "",
     visibility: null,
     accessibility: null,
-    invitedUsers: null,
+    invitedUsers: [],
     location: null,
-    users: null,
+    users: [],
     coreUrl: "http://" + window.location.host + "/GoHost/api/",
     createFromDB: function (idevent) {
         //fill all the relevant fields from SQL, get accessor from session, create objects
@@ -51,14 +51,12 @@ Event = {
     },
     
     invitedFollowUp: function(data){
-        invitedUsers = [];
         for (n=0; n<data.length;n++){
             invitedUsers[n] = data[n].iduser;
         }
     },
     
     attendeeFollowUp: function(data){
-        users = [];
         for (n=0; n<data.length;n++){
             users[n] = data[n].iduser;
         }
@@ -67,18 +65,18 @@ Event = {
     create: function (idhost, idcategory, eventStart, eventEnd, eventMax, description, title, idvisibility, idaccessibility, idlocation) {
         //creates a user from the idhost, category from idcategory, visibility from idvisibility/idaccessibility, location from idlocation, all other fields are filled from parameters
         //if accessibility is 1, add all friends to invited list. Add the created object to the database.
-        var event = {title, idhost, eventMax, idlocation, idvisibility, idaccessibility, eventStart, eventEnd, description, idcategory};
+        var event = {title: title,idhost: idhost,maxattendees: eventMax,idlocation: idlocation,idvisibility: idvisibility,idaccessibility: idaccessibility,starttime: eventStart,endtime: eventEnd,description: description,idcategory: idcategory};
 		$.ajax({
 		  url:'http://143.44.10.35/GoHost/api/event',
 		  type:'POST',
 		  data:JSON.stringify(event),
 		  contentType:'application/json',
 		  dataType:'json',
-		  success: createFollowUp
+		  success: createFollowUp2
 		});
     },
     
-    createFollowUp: function(id){
+    createFollowUp2: function(id){
         //Stores the id of the event row recently added to the database
         idevent = id;
     },
@@ -130,7 +128,6 @@ Event = {
 		  url:'http://143.44.10.35/GoHost/api/notification$idevent=' + idevent,
 		  type:'DELETE'
 		});
-        //Do you want a callback function to this?
     },
     isEventFull: function () {
         if (this.accessibility.getID() == 3) {
@@ -139,8 +136,17 @@ Event = {
             return false;
     },
     addUserToEvent: function (iduser) {
-        
-        //add user to the users array as well as the database and refresh
+        //adds user to the users array as well as the database and refresh
+        n= users.length;
+        users[n] = iduser;
+        var user = {iduser: iduser, idevent: idevent};
+		$.ajax({
+		  url:'http://143.44.10.35/GoHost/api/attendee',
+		  type:'POST',
+		  data:JSON.stringify(user),
+		  contentType:'application/json',
+		  dataType:'json',
+		});
     },
     canUserJoin: function () {
         if (this.accessibility.getID() == 0) {
