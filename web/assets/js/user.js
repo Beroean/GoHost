@@ -8,9 +8,9 @@ User = {
     email: 0,
     password: 0,
     name: 0,
-    friendslist: null,
-    eventshosting: null,
-    eventsattending: null,
+    friendsList: null,
+    eventsHosting: null,
+    eventsAttending: null,
     eventsVisible: null,
     coreUrl: "http://" + window.location.host + "/GoHost/api/",
     
@@ -33,6 +33,7 @@ User = {
         createVisibleList: function(){
         
     },
+    
     receiveUser : function(Data){
         User.iduser = Data.idUser;
         if(User.iduser !== "0") {
@@ -48,6 +49,16 @@ User = {
         return iduser;
     },
     getEventsAttending: function(){
-        
+        return eventsAttending;
+    },
+    getVisibleEvents: function(){
+        return eventsVisible;
+    },
+    getFriendsList: function(){
+        return friendsList;
+    },
+    getEventsHosting: function(){
+        return eventsHosting;
     }
+    
 };
