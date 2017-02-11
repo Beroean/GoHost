@@ -138,7 +138,8 @@ Event = {
         } else
             return false;
     },
-    addUserToEvent: function (user) {
+    addUserToEvent: function (iduser) {
+        
         //add user to the users array as well as the database and refresh
     },
     canUserJoin: function () {
