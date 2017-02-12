@@ -47,9 +47,12 @@ eventsList = {
     
     getEventsVisible: function () {
         //self explantory (2)
-        //Wait for Alex to explain visibility and accessibility  
+        //Wait for Alex to explain visibility and accessibility
+        //Visibility: 2 = public, 1 = friends only, 0 = invites only
+        //Accessiblitiy: 2 = open to everybody, 1 = rquests , 0 = closed  
+        //This is a shit show. Fix it later
         //This would entail the following:
-        //1. Getting all public events
+        //1. Getting all public events, visibility (2)
         //2. Getting all events that friends are hosting
         //3. Getting all events that I've been nvited to
         //4. Get all events I'm in?
