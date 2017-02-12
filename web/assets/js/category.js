@@ -9,7 +9,15 @@ function  Category (idcategory1){
     this.name = this.getName();
     function getName(){
         //get the name of the category from the database
+        var url = Event.coreUrl + "category?idcategory="+idcategory;
+        $.getJSON(url).done(nameFollowUp);
     }
+    //Don't know if this chain of functions will work. Need to learn to do
+    //things in the same function for this
+    function nameFollowUp(data){
+        return data.name;
+    }
+    
     function getID(){
         return idcategory;
     }

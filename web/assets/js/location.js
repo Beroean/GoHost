@@ -8,6 +8,11 @@ function  Location (idlocation1){
     this.name = this.getName();
     function getName(){
         //get the name of the category from the database
+        var url = Event.coreUrl + "location?idlocation="+idlocation;
+        $.getJSON(url).done(nameFollowUp);
+    }
+    function nameFollowUp(data){
+        return data.name;
     }
     function getID(){
         return idlocation;

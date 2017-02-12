@@ -4,12 +4,20 @@
  * and open the template in the editor.
  */
 
+//Do we even need this?
 function  Accessibility (idaccess1){
     this.idaccess = idaccess1;
     this.name = this.getName();
     function getName(){
         //get the name of the accessibility from the database
+        var url = Event.coreUrl + "accessiblity?idaccessiblity="+idaccess;
+        $.getJSON(url).done(nameFollowUp);
     }
+    
+    function nameFollowUp(data){
+        
+    }
+    
     function getID(){
         return idaccess;
     }
