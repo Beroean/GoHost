@@ -8,9 +8,10 @@
 function  Accessibility (idaccess1){
     this.idaccess = idaccess1;
     this.name = this.getName();
+    coreUrl = "http://" + window.location.host + "/GoHost/api/";
     function getName(){
         //get the name of the accessibility from the database
-        var url = Event.coreUrl + "accessiblity?idaccessiblity="+idaccess;
+        var url = coreUrl + "accessiblity?idaccessiblity="+idaccess;
         $.getJSON(url).done(nameFollowUp);
     }
     

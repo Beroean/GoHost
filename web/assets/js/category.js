@@ -7,9 +7,10 @@
 function  Category (idcategory1){
     this.idcategory = idcategory1;
     this.name = this.getName();
+    coreUrl = "http://" + window.location.host + "/GoHost/api/";
     function getName(){
         //get the name of the category from the database
-        var url = Event.coreUrl + "category?idcategory="+idcategory;
+        var url = coreUrl + "category?idcategory="+idcategory;
         $.getJSON(url).done(nameFollowUp);
     }
     //Don't know if this chain of functions will work. Need to learn to do

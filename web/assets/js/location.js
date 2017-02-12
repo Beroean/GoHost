@@ -6,9 +6,10 @@
 function  Location (idlocation1){
     this.idlocation = idlocation1;
     this.name = this.getName();
+    coreUrl = "http://" + window.location.host + "/GoHost/api/";
     function getName(){
         //get the name of the category from the database
-        var url = Event.coreUrl + "location?idlocation="+idlocation;
+        var url = coreUrl + "location?idlocation="+idlocation;
         $.getJSON(url).done(nameFollowUp);
     }
     function nameFollowUp(data){
