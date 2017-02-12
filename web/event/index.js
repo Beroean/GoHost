@@ -3,5 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//Classes that I will be interacting with here: Event, EventList
 
+// Global Variables go under here if they are needed
+
+function setUpComponents() {
+	// Link some buttons to certain functions
+	$('#createPost').on('click', createPostHandler);
+        //Call other methods that you want to call on when this page is pulled up
+	// Call function to display the blog of current user 
+	getBlog();
+	// Retrieve blog info fom other users
+	getNewestBlogs();
+}
+
+//What is this??
+//To make the call wait. Might need this later
+$.wait = function(ms) {
+    var defer = $.Deferred();
+    setTimeout(function() { defer.resolve(); }, ms);
+    return defer;
+};
+
+function refresh() {
+	window.location.href = window.location.href; window.location.reload(true); 
+}
+
+$(window).load(setUpComponents);
 
