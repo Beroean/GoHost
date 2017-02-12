@@ -5,10 +5,10 @@
  */
 
 eventsList = {
-    events: null, //array of events contained in the list
+    events: [], //array of events contained in the list
     accessor: null, //user that is accessing the list
     viewType: 0, // 0 means view events hosting, 1 means events attending, 2 means all visible events
-
+    coreUrl: "http://" + window.location.host + "/GoHost/api/",
     create: function (accessor, viewType) {
         if (viewType == 0){
             getEventsHosting();
@@ -22,13 +22,43 @@ eventsList = {
 
     },
     getEventsHosting: function () {
-        //get all events accessor is hosting, put them in events (0)   
+        //get all events accessor is hosting, put them in events (0)
+        var url = eventsList.coreUrl + "event?idhost="+accessor;
+        $.getJSON(url).done(eventsList.hostingFollowUp);
     },
+    
+    hostingFollowUp: function (data) {
+        for (n=0; n<data.length;n++){
+            events[n] = data[n].idevent;
+        }
+    },
+    
     getEventsAttending: function () {
         //self explanatory (1)
+        var url = eventsList.coreUrl + "attendee?iduser="+accessor;
+        $.getJSON(url).done(eventsList.attendingFollowUp);
     },
+    
+    attendingFollowUp: function (data) {
+        for (n=0; n<data.length;n++){
+            events[n] = data[n].idevent;
+        }
+    },
+    
     getEventsVisible: function () {
-        //self explantory (2)  
+        //self explantory (2)
+        //Wait for Alex to explain visibility and accessibility  
+        //This would entail the following:
+        //1. Getting all public events
+        //2. Getting all events that friends are hosting
+        //3. Getting all events that I've been nvited to
+        //4. Get all events I'm in?
+        //
+    },
+    visibleFollowUp: function (data) {
+        for (n=eventsList.events.length; n<data.length;n++){
+            events[n] = data[n].idevent;
+        }
     },
     getEventsList: function () {
         return events;

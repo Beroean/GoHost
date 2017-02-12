@@ -44,9 +44,9 @@ Event = {
         visibility = new Visibility(data.idvisibility);
         accessibility = new Accessibility(data.idaccessibility);
         category = new Category(data.idcategory);
-        var url = Event.coreUrl + "invited?idevent="+$(idevent).val();
+        var url = Event.coreUrl + "invited?idevent="+idevent;
         $.getJSON(url).done(Event.invitedFollowUp);
-        var url1 = Event.coreUrl + "attendee?idevent="+$(idevent).val();
+        var url1 = Event.coreUrl + "attendee?idevent="+idevent;
         $.getJSON(url1).done(Event.attendeeFollowUp);
     },
     
