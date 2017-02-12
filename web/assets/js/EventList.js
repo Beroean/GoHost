@@ -56,6 +56,10 @@ eventsList = {
         //
     },
     visibleFollowUp: function (data) {
+        //I would call this function many times in the previous one
+        //This is why n starts at the length of the array
+        //Need to find a way later to sort these out by date
+        //A view can do that for sure
         for (n=eventsList.events.length; n<data.length;n++){
             events[n] = data[n].idevent;
         }

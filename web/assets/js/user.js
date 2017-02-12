@@ -20,6 +20,16 @@ User = {
         //create and populate a user object from an already created user row in
         //the database. After that, it will use other
         //objects to populate friends list, eventslist...
+        User.iduser = iduser;
+        var url = Event.coreUrl + "user?iduser="+iduser;
+        $.getJSON(url).done(Event.createFollowUp);
+    },
+    
+    createFollowUp: function(data){
+        email = data.email;
+        password = data.password;
+        name = data.name;
+        //Do you want me to call these other functions right away or to wait for now?
     },
     createFriendsList: function(){
         friendsList = new FriendsList(iduser);
@@ -40,9 +50,6 @@ User = {
             sessionStorage.setItem('id',User.iduser);
             User.email = Data.email;
             User.name = Data.name;
-
-
-            
         }
     },
     getID: function(){
