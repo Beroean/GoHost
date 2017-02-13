@@ -1,7 +1,7 @@
-var eventsHosted = null;
-var eventsAttending = null;
-var visibleEvents = null;
-var user = null;
+var eventsHosted = null
+var eventsAttending = null
+var visibleEvents = null
+var user = null
 var eventTitles;
 var eventHosts;
 var eventStartTimes;
