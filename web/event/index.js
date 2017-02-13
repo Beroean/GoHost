@@ -11,6 +11,7 @@ function setUpComponents() {
 	// Link some buttons to certain functions
         $('#delete').on('click', deleteEvent);
         $('#edit').on('click', editEvent);
+        $('#invite').on('click', inviteFriends);
         //Call other methods that you want to call on when this page is pulled up
 	// Call function to display the event based on the relation of the
         //accessor to that event. Host, Attendee, neither
@@ -31,7 +32,20 @@ function deleteEvent() {
 
 
 function editEvent() {
-    //This will get all the input from the edit form and use to 
+    //This will get all the input from the edit form and use it call all the
+    //edit functions on the event object. After that, it will call the function
+    //that flushes all the changes to the database
+}
+
+
+function inviteFriends() {
+    //This will pull up a list of the user's friends and then the other button
+    //would actually allow you to invite people?
+}
+
+//This will be coded in iteration 2.0??
+function chat(){
+    
 }
 //What is this??
 //To make the call wait. Might need this later
