@@ -3,18 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-//Classes that I will be interacting with here: Event, EventList
+//Classes that I will be interacting with here: Event, User, FriendsList
 
 // Global Variables go under here if they are needed
 
 function setUpComponents() {
 	// Link some buttons to certain functions
-	$('#createPost').on('click', createPostHandler);
+        $('#delete').on('click', deleteEvent);
         //Call other methods that you want to call on when this page is pulled up
 	// Call function to display the blog of current user 
 	getBlog();
 	// Retrieve blog info fom other users
 	getNewestBlogs();
+        //Show and hide all the divs in the html here
 }
 
 //What is this??
