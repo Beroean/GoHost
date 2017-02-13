@@ -12,11 +12,11 @@ function setUpComponents() {
         $('#delete').on('click', deleteEvent);
         $('#edit').on('click', editEvent);
         $('#invite').on('click', inviteFriends);
-        //Call other methods that you want to call on when this page is pulled up
-	// Call function to display the event based on the relation of the
+	//Call function to display the event based on the relation of the
         //accessor to that event. Host, Attendee, neither
 	getEvent(id);
         //Show and hide all the divs in the html under here
+        
 }
 
 function getEvent(id) {
