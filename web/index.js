@@ -32,7 +32,7 @@ sys_init = {
         }
     },
     moveToHome: function (data) {
-        if (data.iduser != 0) {
+        if (data.iduser !== 0) {
             // Storing the id number of the user
             sessionStorage.setItem('id', data.iduser);
             //Take them to home page
@@ -56,7 +56,7 @@ sys_init = {
         $('button#login').on('click', sys_init.doLogin);
         // Button for creating an account
         $('button#register').on('click', sys_init.createUser);
-    },
-}
+    }
+};
 
 $(document).ready(sys_init.setUpButtons);
