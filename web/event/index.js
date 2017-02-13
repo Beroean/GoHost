@@ -6,18 +6,33 @@
 //Classes that I will be interacting with here: Event, User, FriendsList
 
 // Global Variables go under here if they are needed
-
+var id = parseInt(sessionStorage.getItem('id'));
 function setUpComponents() {
 	// Link some buttons to certain functions
         $('#delete').on('click', deleteEvent);
+        $('#edit').on('click', editEvent);
         //Call other methods that you want to call on when this page is pulled up
-	// Call function to display the blog of current user 
-	getBlog();
-	// Retrieve blog info fom other users
-	getNewestBlogs();
-        //Show and hide all the divs in the html here
+	// Call function to display the event based on the relation of the
+        //accessor to that event. Host, Attendee, neither
+	getEvent(id);
+        //Show and hide all the divs in the html under here
 }
 
+function getEvent(id) {
+    //This is where the event object will be created based on the id of the 
+    //accessor. A couple of functions will be called afterwards on that object
+    //to determne the relationship of that accessor to the event
+    //After that, this will populate the appropriate parts of the html
+}
+
+function deleteEvent() {
+    //Calls the deleteEvent function on the event object
+}
+
+
+function editEvent() {
+    //This will get all the input from the edit form and use to 
+}
 //What is this??
 //To make the call wait. Might need this later
 $.wait = function(ms) {

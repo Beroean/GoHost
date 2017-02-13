@@ -41,8 +41,6 @@ Event = {
         description = data.description;
         title = data.title;
         location = new Location(data.idlocation);
-        visibility = new Visibility(data.idvisibility);
-        accessibility = new Accessibility(data.idaccessibility);
         category = new Category(data.idcategory);
         var url = Event.coreUrl + "invited?idevent="+idevent;
         $.getJSON(url).done(Event.invitedFollowUp);
@@ -212,6 +210,12 @@ Event = {
     getUsers : function(){
         return users;
     },
+    
+    refreshEdits(){
+        //This will have a put request that updates the db with all the edits 
+        //That might have happened to the event object. We will call this 
+        //End-all function everytime an edit happens
+    }
 };
 
 
