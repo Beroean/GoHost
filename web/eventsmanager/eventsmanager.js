@@ -25,36 +25,6 @@ function setUpComponents() {
         
 }
 
-
-//Global variables go under here
-var id = parseInt(sessionStorage.getItem('id'));
-function setUpComponents() {
-    // Link some buttons to certain functions
-    $('#delete').on('click', deleteEvent);
-    $('#edit').on('click', editEvent);
-    $('#invite').on('click', inviteFriends);
-    //Call function to display the event based on the relation of the
-    //accessor to that event. Host, Attendee, neither
-    getEvent(id);
-    //Show and hide all the divs in the html under here
-        
-}
-
-
-//Global variables go under here
-var id = parseInt(sessionStorage.getItem('id'));
-function setUpComponents() {
-    // Link some buttons to certain functions
-    $('#delete').on('click', deleteEvent);
-    $('#edit').on('click', editEvent);
-    $('#invite').on('click', inviteFriends);
-    //Call function to display the event based on the relation of the
-    //accessor to that event. Host, Attendee, neither
-    getEvent(id);
-    //Show and hide all the divs in the html under here
-        
-}
-
 function setUpComponents() {
     $('button#createEvent').on('click', createEvent);
 }
@@ -74,19 +44,19 @@ eventsHosted = user.getEventsHosted();
 eventsAttending = user.getEventsAttending();
 
 }
-function getStringsFromEvents(EventsList) {
-    eventTitles = new Array(EventsList.size);
-    eventHosts = new Array(EventsList.size);
-    eventStartTimes = new Array(EventsList.size);
-    eventEndTimes = new Array(EventsList.size);
-    eventCategories = new Array(EventsList.size);
-    for (i = 0; i < EventsList.size; i++) {
-        eventTitles[i] = EventsList[i].getTitle();
-        eventHosts [i] = EventsList[i].getHost();
-        eventStartTimes[i] = EventsList[i].getStartTime();
-        eventEndTimes[i] = EventsList[i].getEndTime();
-        eventCategories[i] = EventsList[i].getCategory();
-    }
+function getStringsFromEvents(EventsList){
+  eventTitles =  new Array(EventsList.size);
+  eventHosts = new Array(EventsList.size);
+  eventStartTimes = new Array(EventsList.size);
+  eventEndTimes = new Array(EventsList.size);
+  eventCategories = new Array(EventsList.size);
+  for (i=0;i<EventsList.size;i++){
+  eventTitles[i] = EventsList.getEvents()[i].getTitle();
+  eventHosts [i] = EventsList.getEvents()[i].getHost();
+  eventStartTimes[i] = EventsList.getEvents()[i].getStartTime();
+  eventEndTimes[i] = EventsList.getEvents()[i].getEndTime();
+  eventCategories[i] = EventsList.getEvents()[i].getCategory();
+  }
 }
 function getHostStrings() {
     getStringsFromEvents(eventsHosted);
