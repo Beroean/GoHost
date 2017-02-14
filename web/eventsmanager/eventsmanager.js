@@ -42,11 +42,11 @@ function getStringsFromEvents(EventsList){
   eventEndTimes = new Array(EventsList.size);
   eventCategories = new Array(EventsList.size);
   for (i=0;i<EventsList.size;i++){
-  eventTitles[i] = EventsList[i].getTitle();
-  eventHosts [i] = EventsList[i].getHost();
-  eventStartTimes[i] = EventsList[i].getStartTime();
-  eventEndTimes[i] = EventsList[i].getEndTime();
-  eventCategories[i] = EventsList[i].getCategory();
+  eventTitles[i] = EventsList.getEvents()[i].getTitle();
+  eventHosts [i] = EventsList.getEvents()[i].getHost();
+  eventStartTimes[i] = EventsList.getEvents()[i].getStartTime();
+  eventEndTimes[i] = EventsList.getEvents()[i].getEndTime();
+  eventCategories[i] = EventsList.getEvents()[i].getCategory();
   }
 }
 function getHostStrings(){
