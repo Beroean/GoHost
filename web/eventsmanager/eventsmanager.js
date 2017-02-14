@@ -39,6 +39,21 @@ function setUpComponents() {
         
 }
 
+
+//Global variables go under here
+var id = parseInt(sessionStorage.getItem('id'));
+function setUpComponents() {
+    // Link some buttons to certain functions
+    $('#delete').on('click', deleteEvent);
+    $('#edit').on('click', editEvent);
+    $('#invite').on('click', inviteFriends);
+    //Call function to display the event based on the relation of the
+    //accessor to that event. Host, Attendee, neither
+    getEvent(id);
+    //Show and hide all the divs in the html under here
+        
+}
+
 function setUpComponents() {
     $('button#createEvent').on('click', createEvent);
 }
