@@ -12,28 +12,28 @@ var eventStartTimes;
 var eventEndTimes;
 var eventCategories;
 
-function getEvents(){
+function getEvents() {
     user = new User();
     user.create(userID);
     visibleEvents = user.getVisibleEvents();
     getVisibleStrings();
     //this is where it connects with HTML to print the feed in objects
-    
+
 }
-function getStringsFromEvents(EventsList){
-  eventTitles =  new Array(EventsList.size);
-  eventHosts = new Array(EventsList.size);
-  eventStartTimes = new Array(EventsList.size);
-  eventEndTimes = new Array(EventsList.size);
-  eventCategories = new Array(EventsList.size);
-  for (i=0;i<EventsList.size;i++){
-  eventTitles[i] = EventsList[i].getTitle();
-  eventHosts [i] = EventsList[i].getHost();
-  eventStartTimes[i] = EventsList[i].getStartTime();
-  eventEndTimes[i] = EventsList[i].getEndTime();
-  eventCategories[i] = EventsList[i].getCategory();
-  }
+function getStringsFromEvents(EventsList) {
+    eventTitles = new Array(EventsList.size);
+    eventHosts = new Array(EventsList.size);
+    eventStartTimes = new Array(EventsList.size);
+    eventEndTimes = new Array(EventsList.size);
+    eventCategories = new Array(EventsList.size);
+    for (i = 0; i < EventsList.size; i++) {
+        eventTitles[i] = EventsList[i].getTitle();
+        eventHosts [i] = EventsList[i].getHost();
+        eventStartTimes[i] = EventsList[i].getStartTime();
+        eventEndTimes[i] = EventsList[i].getEndTime();
+        eventCategories[i] = EventsList[i].getCategory();
+    }
 }
-function getVisibleStrings(){
+function getVisibleStrings() {
     getStringsFromEvents(visibleEvents);
 }
