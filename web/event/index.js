@@ -6,19 +6,28 @@
 //Classes that I will be interacting with here: Event, User, FriendsList
 
 // Global Variables go under here if they are needed
-var id = parseInt(sessionStorage.getItem('id'));
-var eventid  = parseInt(sessionStorage.getItem('eventid'));
+var id = 0;
+var eventid  = 0;
 var event = null;
-var accessor = null
+var accessor = null;
+var isHost = false;
+var isAttendee = false;
+var canJoin = false;
 function setUpComponents() {
 	// Link some buttons to certain functions
         $('#delete').on('click', deleteEvent);
         $('#edit').on('click', editEvent);
         $('#invite').on('click', inviteFriends);
+        id = parseInt(sessionStorage.getItem('id'));
+        eventid  = parseInt(sessionStorage.getItem('eventid'));
 	//Call function to display the event based on the relation of the
         //accessor to that event. Host, Attendee, neither
 	getUser();
         getEvent();
+        isHost = event.isAccessorHost();
+        isAttendee = event.isUserInEvent();
+        canJoin = (event.canUserJoin()&&!event.isUserInEvent());
+        
 
         
 
@@ -28,7 +37,7 @@ function setUpComponents() {
 
 function getEvent() {
         event =  new Event();
-        event.createFromDB(eventid);
+        event.createFromDB(eventid, id);
     //This is where the event object will be created based on the id of the 
     //accessor. A couple of functions will be called afterwards on that object
     //to determne the relationship of that accessor to the event

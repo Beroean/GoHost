@@ -24,10 +24,12 @@ Event = {
     location: null,
     users: [],
     coreUrl: "http://" + window.location.host + "/GoHost/api/",
-    createFromDB: function (idevent) {
+    createFromDB: function (idevent, iduser) {
         //fill all the relevant fields from SQL, get accessor from session, create objects
         //for category, user, host, location, visibility, accessibility
         var url = Event.coreUrl + "event?idevent="+idevent;
+        accessor = new User;
+        accessor.create(iduser)
         $.getJSON(url).done(Event.createFollowUp);
     },
     createFollowUp: function(data){
