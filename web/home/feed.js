@@ -24,17 +24,19 @@ function getEvents() {
     //this is where it connects with HTML to print the feed in objects
 }
 function getStringsFromEvents(EventsList) {
-    eventTitles = new Array(EventsList.size);
-    eventHosts = new Array(EventsList.size);
-    eventStartTimes = new Array(EventsList.size);
-    eventEndTimes = new Array(EventsList.size);
-    eventCategories = new Array(EventsList.size);
-    for (i = 0; i < EventsList.size; i++) {
-        eventTitles[i] = EventsList[i].getTitle();
-        eventHosts [i] = EventsList[i].getHost();
-        eventStartTimes[i] = EventsList[i].getStartTime();
-        eventEndTimes[i] = EventsList[i].getEndTime();
-        eventCategories[i] = EventsList[i].getCategory();
+    eventTitles = new Array(EventsList.getSize);
+    eventHosts = new Array(EventsList.getSize);
+    eventStartTimes = new Array(EventsList.getSize);
+    eventEndTimes = new Array(EventsList.getSize);
+    eventCategories = new Array(EventsList.getSize);
+    eventIDs = new Array(EventsList.getSize);
+    for (i = 0; i < EventsList.getSize(); i++) {
+        eventTitles[i] = EventsList.getEventsList()[i].getTitle();
+        eventHosts [i] = EventsList.getEventsList()[i].getHost();
+        eventStartTimes[i] = EventsList.getEventsList()[i].getStartTime();
+        eventEndTimes[i] = EventsList.getEventsList()[i].getEndTime();
+        eventCategories[i] = EventsList.getEventsList()[i].getCategory();
+        eventIDs[i] = EventsList.getEventsList()[i].getID();
     }
 }
 function getVisibleStrings() {
