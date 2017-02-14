@@ -45,7 +45,7 @@ function getEvent() {
 }
 
 function deleteEvent() {
-    //Calls the deleteEvent function on the event object
+    event.deleteEvent();
 }
 
 
