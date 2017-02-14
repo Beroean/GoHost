@@ -7,7 +7,7 @@
 sys_init = {
     // changed .host to .hostname
     coreUrl: "http://" + window.location.hostname + "/GoHost/api/",
-    
+
     doLogin: function () {
         var url = sys_init.coreUrl + "user?email=" + $('#loginEmail').val() + "&password=" + $('#loginPass').val();
         $.getJSON(url).done(sys_init.moveToHome);
