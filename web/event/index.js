@@ -7,6 +7,9 @@
 
 // Global Variables go under here if they are needed
 var id = parseInt(sessionStorage.getItem('id'));
+var eventid  = parseInt(sessionStorage.getItem('eventid'));
+var event = null;
+var accessor = null
 function setUpComponents() {
 	// Link some buttons to certain functions
         $('#delete').on('click', deleteEvent);
@@ -14,12 +17,18 @@ function setUpComponents() {
         $('#invite').on('click', inviteFriends);
 	//Call function to display the event based on the relation of the
         //accessor to that event. Host, Attendee, neither
-	getEvent(id);
+	getUser();
+        getEvent();
+
+        
+
         //Show and hide all the divs in the html under here
         
 }
 
-function getEvent(id) {
+function getEvent() {
+        event =  new Event();
+        event.createFromDB(eventid);
     //This is where the event object will be created based on the id of the 
     //accessor. A couple of functions will be called afterwards on that object
     //to determne the relationship of that accessor to the event
