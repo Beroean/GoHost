@@ -211,11 +211,11 @@ Event = {
         return users;
     },
     
-    refreshEdits(){
+    refreshEdits: function(){
         //This will have a put request that updates the db with all the edits 
         //That might have happened to the event object. We will call this 
         //End-all function everytime an edit happens
-    }
+    },
 };
 
 
