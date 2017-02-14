@@ -9,8 +9,6 @@ Event = {
     host: null,
     category: null,
     accessor: null,
-    //This is being used for both created events and events pulled from db
-    //Might create problems in the future
     idevent: 0,
     chat: null,
     eventStart: 0,
@@ -18,6 +16,7 @@ Event = {
     eventMax: 0,
     description: "",
     title: "",
+    //visibility and accessibility are still being treated as objects in the code
     visibility: null,
     accessibility: null,
     invitedUsers: [],
@@ -214,6 +213,14 @@ Event = {
     },
     
     refreshEdits: function(){
+        var event = {title: title,idhost: host,maxattendees: eventMax,idlocation: location.idlocation,idvisibility: visibility,idaccessibility: accessibility,starttime: eventStart,endtime: eventEnd,description: description,idcategory: category.idcategory};
+		$.ajax({
+		  url:'http://143.44.10.35/GoHost/api/event',
+		  type:'PUT',
+		  data:JSON.stringify(user),
+		  contentType:'application/json',
+		  dataType:'json',
+		});
         //This will have a put request that updates the db with all the edits 
         //That might have happened to the event object. We will call this 
         //End-all function everytime an edit happens
