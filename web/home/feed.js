@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var userID = parseInt(SessionStorage.getItem('id'));
+
+var id = 0;
 var visibleEvents = null
 var user = null
 var eventTitles;
@@ -11,6 +12,9 @@ var eventHosts;
 var eventStartTimes;
 var eventEndTimes;
 var eventCategories;
+function setUpComponents() {
+    id = parseInt(SessionStorage.getItem('id'));
+}
 
 function getEvents() {
     user = new User();
@@ -18,7 +22,6 @@ function getEvents() {
     visibleEvents = user.getVisibleEvents();
     getVisibleStrings();
     //this is where it connects with HTML to print the feed in objects
-
 }
 function getStringsFromEvents(EventsList) {
     eventTitles = new Array(EventsList.size);
