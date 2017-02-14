@@ -1,12 +1,28 @@
-var eventsHosted = null
-var eventsAttending = null
-var visibleEvents = null
-var user = null
+var eventsHosted = null;
+var eventsAttending = null;
+var visibleEvents = null;
+var user = null;
 var eventTitles;
 var eventHosts;
 var eventStartTimes;
 var eventEndTimes;
 var eventCategories;
+//Classes I will be interacting with here: eventList, user, (?event?)
+
+
+//Global variables go under here
+var id = parseInt(sessionStorage.getItem('id'));
+function setUpComponents() {
+    // Link some buttons to certain functions
+    $('#delete').on('click', deleteEvent);
+    $('#edit').on('click', editEvent);
+    $('#invite').on('click', inviteFriends);
+    //Call function to display the event based on the relation of the
+    //accessor to that event. Host, Attendee, neither
+    getEvent(id);
+    //Show and hide all the divs in the html under here
+        
+}
 
 
 
@@ -55,3 +71,17 @@ function createEvent(){
     var event = new Event(user.getID(),eventCat, eventStart, eventEnd, description, eventTitle, eventVis, eventAcc, eventLoc);
     
 }
+
+//What is this??
+//To make the call wait. Might need this later
+$.wait = function(ms) {
+    var defer = $.Deferred();
+    setTimeout(function() { defer.resolve(); }, ms);
+    return defer;
+};
+
+function refresh() {
+    window.location.href = window.location.href; window.location.reload(true); 
+}
+
+$(window).load(setUpComponents);
